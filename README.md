@@ -9,3 +9,9 @@ node ./zip.js <path> -t=mp3 -d -s=1024
    -d 删除源文件
    -s=1024
 ```
+
+## fnt.js
+提取fnt图片单独图片
+```
+node ./fnt.js <path>
+```

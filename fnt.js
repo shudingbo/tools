@@ -66,13 +66,10 @@ function parseArgv() {
 }
 
 
-
-
 function parseFnt( fntFile ) {
     let str = fs.readFileSync(fntFile).toString();
     let strs = str.split('\n');
     let orgiImg = images(pngPath);
-
 
     for( let it of strs ) {
         if( it.startsWith('char ') ){

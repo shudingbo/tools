@@ -15,3 +15,18 @@ node ./zip.js <path> -t=mp3 -d -s=1024
 ```
 node ./fnt.js <path>
 ```
+
+
+## fntmerge.js
+合并指定路径下多个fnt资源。输出一张2^n 正方形合图
+```
+node ./fntmerge.js <path>
+```
+
+* -o 输出png文件名   ```-o=test.png```
+* -s 输出合图宽度,没有指定则自己运算 ```-s=512```
+* -d 是否显示调试信息   ```-d```
+
+## getJsonString.js
+获取所有json文件里的字并且统计输出
+

@@ -7,8 +7,8 @@ var path = require('path');
 /** 遍历获取指定路径下的指定类型的文件
  * 
  * @param {string} folder 
- * @param {string[]} fileType 
- * @param {boolean} re - 是否递归查询
+ * @param {string[]} fileType ['.jpg','.png']
+ * @param {boolean} re - 是否递归查询 default: true
  * @return {string[]}
  */
  function getFiles( folder, fileType, re=true) {
@@ -44,7 +44,7 @@ function _getFiles( folder, fileType, outFileList, re) {
             }
         }
         if (isDir && re === true) {
-            _getFiles(filedir); //递归，如果是文件夹，就继续遍历该文件夹下面的文件
+            _getFiles(filedir,fileType, outFileList, re); //递归，如果是文件夹，就继续遍历该文件夹下面的文件
         }
     });
 }

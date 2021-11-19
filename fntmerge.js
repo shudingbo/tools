@@ -1,10 +1,8 @@
 const images = require("images");
 const fs = require("fs");
 const {getFiles} = require('./utiliy');
+const path = require('path');
 
-var path = require('path');
-
-let isUnPack = false;
 
 let fntPath = '';
 let pngPath = '';

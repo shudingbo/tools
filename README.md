@@ -29,4 +29,6 @@ node ./fntmerge.js <path>
 
 ## getJsonString.js
 获取所有json文件里的字并且统计输出
-
+```
+node ./getJsonString.js <path> -a -o="C:\Users\sdb\Desktop\out"
+```

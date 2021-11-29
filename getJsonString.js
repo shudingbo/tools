@@ -309,7 +309,7 @@ function output(){
             console.log( a, it.c, it.n );
         }
 
-        szArr.push( `${a} ${it.c} ${it.n}` );
+        szArr.push( `${a} ${it.c} ${it.n} ${it.code}` );
     }
 
     if( gRecordTa === true ) {

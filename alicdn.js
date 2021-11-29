@@ -1,6 +1,7 @@
 const Cdn20180510 = require('@alicloud/cdn-2018-05-10');
 const fs = require("fs");
 const OpenApi = require('@alicloud/openapi-client');
+const URL = require('url');
 
 
 function timeout (ms) {
@@ -91,28 +92,37 @@ class Client {
       }
 
       if( cnt >= this.cnt ) {
-        let taskInfo = null;
-        if( g_mode === "refresh" ) {
-          taskInfo = await this.refresh( fileLs);
-        } else {
-          taskInfo = await this.prehot( fileLs);
-        }
-        this.preTask[taskInfo.taskId] = {taskInfo};
+        await this._runTask( fileLs );
 
-        //
         cnt = 0;
         fileLs = [];
-
-        if( this.chkTimer === null ) {
-          this.chkTimer = setInterval(()=> {
-            this.checkStatus();
-          }, 1000);          
-        }
-
-        await timeout(5000);
       }
     }
+
+    if( fileLs.length > 0 ) {
+      await this._runTask( fileLs );
+    }
   }
+
+
+  async _runTask( fileLs ) {
+    let taskInfo = null;
+    if( g_mode === "refresh" ) {
+      taskInfo = await this.refresh( fileLs);
+    } else {
+      taskInfo = await this.prehot( fileLs);
+    }
+    this.preTask[taskInfo.taskId] = {taskInfo};
+
+    if( this.chkTimer === null ) {
+      this.chkTimer = setInterval(()=> {
+        this.checkStatus();
+      }, 1000);          
+    }
+
+    await timeout(5000);
+  }
+
 
   checkStatus() {
     (async() => {
@@ -126,7 +136,8 @@ class Client {
           for( let t of sta.Tasks.CDNTask ) {
             if(t.Status !== 'Complete' || t.Process !== '100%' ) {
               allOver = false;
-              console.log(`--- file ${t.ObjectPath} process: ${t.Process}` );
+              let url = new URL.URL(t.ObjectPath);
+              console.log(`--- file ${url.pathname} ${t.Process}` );
             }
           }
 

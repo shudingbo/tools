@@ -11,6 +11,8 @@
   "dependencies": {
     "@alicloud/cdn-2018-05-10": "^1.0.0",
     "@alicloud/openapi-client": "^0.3.8",
-    "images": "^3.2.3"
+    "filter-scan-dir": "^1.0.10",
+    "images": "^3.2.3",
+    "read-dir-deep": "^7.0.1"
   }
 }

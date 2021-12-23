@@ -32,3 +32,13 @@ node ./fntmerge.js <path>
 ```
 node ./getJsonString.js <path> -a -o="C:\Users\sdb\Desktop\out"
 ```
+
+## webpConv.js
+
+转换文件名前缀为wp_的png文件为 webp格式。
+
+```bash
+node ./webpconv.js <要转换的路径>
+```
+
+* webpconv.bat 拖动文件夹到此批处理上，将对文件夹下的所有png进行格式转换

@@ -106,16 +106,16 @@ const tb = [];
     }
     console.log('=== start rename webP file');
     idx = 0;
-    // for( let file of imgLs ){
-    //   let res = path.parse( file );
-    //   let webPPath = path.join( res.dir, `${res.name}.webp`);
-    //   if( fs.existsSync(webPPath) === true ){
-    //     console.log( `rename ${idx}/${length}.  ${file}` );
-    //     fs.unlinkSync( file );
-    //     fs.renameSync( webPPath, file );
-    //   }
-    //   idx++;
-    // }
+    for( let file of imgLs ){
+      let res = path.parse( file );
+      let webPPath = path.join( res.dir, `${res.name}.webp`);
+      if( fs.existsSync(webPPath) === true ){
+        console.log( `rename ${idx}/${length}.  ${file}` );
+        fs.unlinkSync( file );
+        fs.renameSync( webPPath, file );
+      }
+      idx++;
+    }
 
     if( totalSrcSize > 0 ) {
       console.table(tb);

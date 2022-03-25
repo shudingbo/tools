@@ -42,3 +42,7 @@ node ./webpconv.js <要转换的路径>
 ```
 
 * webpconv.bat 拖动文件夹到此批处理上，将对文件夹下的所有png进行格式转换
+
+## mkAttachDB.js
+   生成含有表分区的 sqlserver 附加数据库命令。
+

@@ -88,10 +88,9 @@ const tb = [];
 let cores = os.cpus().length;
 let workerSize = cores;
 let workers = [];
-
 let cnt = 0;
 for (let i = 0; i < workerSize; i++) {
-  const thread = new Worker("./cwebpThread.js", {
+  const thread = new Worker(`${__dirname}/cwebpThread.js`, {
     trackUnmanagedFds: true,
   });
   let worker = {
